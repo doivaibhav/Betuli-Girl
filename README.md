@@ -88,4 +88,67 @@
     <p>
       I’ve been thinking about you.<br/>
       About us.<br/>
-      And how everything feels warmer when you
+      And how everything feels warmer when you’re around.
+    </p>
+
+    <h1>Will you be my Valentine?</h1>
+
+    <button class="yes" onclick="normalYes()">Yes 💖</button>
+    <button class="hell runaway" id="runawayBtn" onclick="hellYes()">Hell Yeah Poo 😌</button>
+  </div>
+
+  <!-- YES SCREEN -->
+  <div class="card hidden" id="yesCard">
+    <h1>You made my day 🥹</h1>
+    <p>
+      I can’t wait to make memories with you.<br/>
+      Happy Valentine’s, Renuka ❤️
+    </p>
+  </div>
+
+  <!-- HELL YEAH SCREEN -->
+  <div class="card hidden" id="gifCard">
+    <h1>LET’S GOOOO 🥳💖</h1>
+    <p>Now listen to this…</p>
+
+    <img src="celebrate.gif" alt="Celebration GIF" />
+
+    <p>Happy Valentine’s, Renuka ❤️</p>
+  </div>
+
+  <script>
+    function normalYes() {
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("yesCard").classList.remove("hidden");
+    }
+
+    function hellYes() {
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("gifCard").classList.remove("hidden");
+
+      const song = document.getElementById("loveSong");
+      song.currentTime = 47; // 🎵 START AT 47 SECONDS
+      song.play();
+    }
+
+    const btn = document.getElementById("runawayBtn");
+
+    document.addEventListener("mousemove", (e) => {
+      if (!btn) return;
+
+      const rect = btn.getBoundingClientRect();
+      const btnX = rect.left + rect.width / 2;
+      const btnY = rect.top + rect.height / 2;
+
+      const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
+
+      if (distance < 160) {
+        const moveX = (Math.random() - 0.5) * window.innerWidth * 0.8;
+        const moveY = (Math.random() - 0.5) * window.innerHeight * 0.6;
+        btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      }
+    });
+  </script>
+
+</body>
+</html>
