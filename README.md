@@ -45,6 +45,7 @@
       border: none;
       cursor: pointer;
       margin: 8px;
+      position: relative;
     }
 
     .yes {
@@ -59,8 +60,7 @@
     }
 
     .runaway {
-      position: relative;
-      transition: transform 0.15s ease;
+      transition: transform 0.12s ease;
     }
 
     img {
@@ -76,7 +76,7 @@
 </head>
 <body>
 
-  <!-- QUESTION CARD -->
+  <!-- QUESTION -->
   <div class="card" id="question">
     <h1>Hey Renuka ❤️</h1>
 
@@ -89,10 +89,10 @@
     <h1>Will you be my Valentine?</h1>
 
     <button class="yes" onclick="normalYes()">Yes 💖</button>
-    <button class="hell runaway" onclick="hellYes()">Ohh Hell Yeah Poo 😌</button>
+    <button class="hell runaway" id="runawayBtn" onclick="hellYes()">Hell Yeah Poo 😌</button>
   </div>
 
-  <!-- NORMAL YES -->
+  <!-- YES SCREEN -->
   <div class="card hidden" id="yesCard">
     <h1>You made my day 🥹</h1>
     <p>
@@ -101,47 +101,6 @@
     </p>
   </div>
 
-  <!-- HELL YEAH GIF CELEBRATION -->
+  <!-- HELL YEAH GIF SCREEN -->
   <div class="card hidden" id="gifCard">
-    <h1>LET’S GOOOO 🥳💖</h1>
-    <p>That’s the energy I was waiting for.</p>
-
-    <!-- Upload celebrate.gif to repo and keep this -->
-    <img src="celebrate.gif" alt="Celebration GIF" />
-
-    <p>Happy Valentine’s, Renuka ❤️</p>
-  </div>
-
-  <script>
-    function normalYes() {
-      document.getElementById("question").classList.add("hidden");
-      document.getElementById("yesCard").classList.remove("hidden");
-    }
-
-    function hellYes() {
-      document.getElementById("question").classList.add("hidden");
-      document.getElementById("gifCard").classList.remove("hidden");
-    }
-
-    // Runaway button logic (desktop only)
-    const runawayBtn = document.querySelector(".runaway");
-
-    document.addEventListener("mousemove", (e) => {
-      if (!runawayBtn) return;
-
-      const rect = runawayBtn.getBoundingClientRect();
-      const btnX = rect.left + rect.width / 2;
-      const btnY = rect.top + rect.height / 2;
-
-      const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
-
-      if (distance < 120) {
-        const moveX = (Math.random() - 0.5) * 220;
-        const moveY = (Math.random() - 0.5) * 140;
-        runawayBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
-      }
-    });
-  </script>
-
-</body>
-</html>
+    <h1
