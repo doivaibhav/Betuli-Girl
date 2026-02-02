@@ -117,7 +117,7 @@
     <h1>Dayum GIRLLLLLL 🥳💖</h1>
     <p>I LOVE YOU!! Worth every second 😌</p>
 
-    <img src="celebrate.gif" alt="Celebration GIF" />
+    <img src="celebrate2.gif" alt="Celebration GIF" />
 
     <p>Happy Valentine’s, Renuka ❤️</p>
   </div>
