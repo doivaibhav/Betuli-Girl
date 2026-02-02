@@ -16,6 +16,7 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       text-align: center;
       color: #333;
+      overflow: hidden;
     }
 
     .card {
@@ -57,6 +58,11 @@
       font-weight: 600;
     }
 
+    .runaway {
+      position: relative;
+      transition: transform 0.15s ease;
+    }
+
     img {
       max-width: 100%;
       border-radius: 12px;
@@ -66,11 +72,6 @@
     .hidden {
       display: none;
     }
-    .runaway {
-  position: relative;
-  transition: transform 0.15s ease;
-}
-
   </style>
 </head>
 <body>
@@ -88,8 +89,7 @@
     <h1>Will you be my Valentine?</h1>
 
     <button class="yes" onclick="normalYes()">Yes 💖</button>
-    <button class="hell runaway" onclick="hellYes()">Hell Yeah Poo 😌</button>
-
+    <button class="hell runaway" onclick="hellYes()">Ohh Hell Yeah Poo 😌</button>
   </div>
 
   <!-- NORMAL YES -->
@@ -104,16 +104,12 @@
   <!-- HELL YEAH GIF CELEBRATION -->
   <div class="card hidden" id="gifCard">
     <h1>LET’S GOOOO 🥳💖</h1>
-    <p>
-      That’s the energy I was waiting for.
-    </p>
+    <p>That’s the energy I was waiting for.</p>
 
-    <!-- Replace GIF link if you want -->
-    <img src="celebrate.gif" />
+    <!-- Upload celebrate.gif to repo and keep this -->
+    <img src="celebrate.gif" alt="Celebration GIF" />
 
-    <p>
-      Happy Valentine’s, Renuka ❤️
-    </p>
+    <p>Happy Valentine’s, Renuka ❤️</p>
   </div>
 
   <script>
@@ -126,23 +122,25 @@
       document.getElementById("question").classList.add("hidden");
       document.getElementById("gifCard").classList.remove("hidden");
     }
+
+    // Runaway button logic (desktop only)
     const runawayBtn = document.querySelector(".runaway");
 
-  document.addEventListener("mousemove", (e) => {
-    if (!runawayBtn) return;
+    document.addEventListener("mousemove", (e) => {
+      if (!runawayBtn) return;
 
-    const rect = runawayBtn.getBoundingClientRect();
-    const btnX = rect.left + rect.width / 2;
-    const btnY = rect.top + rect.height / 2;
+      const rect = runawayBtn.getBoundingClientRect();
+      const btnX = rect.left + rect.width / 2;
+      const btnY = rect.top + rect.height / 2;
 
-    const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
+      const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
 
-    if (distance < 120) {
-      const moveX = (Math.random() - 0.5) * 200;
-      const moveY = (Math.random() - 0.5) * 120;
-      runawayBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    }
-  });
+      if (distance < 120) {
+        const moveX = (Math.random() - 0.5) * 220;
+        const moveY = (Math.random() - 0.5) * 140;
+        runawayBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      }
+    });
   </script>
 
 </body>
