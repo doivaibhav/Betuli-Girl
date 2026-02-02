@@ -83,15 +83,15 @@
 
   <!-- QUESTION -->
   <div class="card" id="question">
-    <h1>Hey Renuka ❤️</h1>
+    <h1> Priya Renuka Ji ❤️</h1>
 
     <p>
       I’ve been thinking about you.<br/>
-      About us.<br/>
+      About your beautiful eyes.<br/>
       And how everything feels warmer when you’re around.
     </p>
 
-    <h1>Will you be my Valentine?</h1>
+    <h1>Will you be my Valentine forever?</h1>
 
     <button class="yes" onclick="normalYes()">Yes 💖</button>
     <button class="hell runaway" id="runawayBtn" onclick="hellYes()">Hell Yeah Poo 😌</button>
@@ -108,8 +108,8 @@
 
   <!-- HELL YEAH SCREEN -->
   <div class="card hidden" id="gifCard">
-    <h1>LET’S GOOOO 🥳💖</h1>
-    <p>Now listen to this…</p>
+    <h1>Dayum GIRLL 🥳💖</h1>
+    <p>I love you!! Now listen to this…</p>
 
     <img src="celebrate.gif" alt="Celebration GIF" />
 
