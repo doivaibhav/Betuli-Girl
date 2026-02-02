@@ -127,8 +127,18 @@
       document.getElementById("gifCard").classList.remove("hidden");
 
       const song = document.getElementById("loveSong");
-      song.currentTime = 47; // 🎵 START AT 47 SECONDS
-      song.play();
+
+      // Wait until metadata is loaded, THEN jump to 47s
+      song.onloadedmetadata = () => {
+        song.currentTime = 47;
+        song.play();
+      };
+
+      // Fallback in case metadata is already loaded
+      if (song.readyState >= 1) {
+        song.currentTime = 47;
+        song.play();
+      }
     }
 
     const btn = document.getElementById("runawayBtn");
