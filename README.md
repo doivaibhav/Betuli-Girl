@@ -63,21 +63,25 @@
       transition: transform 0.12s ease;
     }
 
-    .hidden {
-      display: none;
-    }
-
     img {
       max-width: 100%;
       border-radius: 12px;
       margin-top: 16px;
     }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <!-- AUDIO -->
-  <audio id="loveSong" preload="auto">
+  <!-- AUDIO FILES -->
+  <audio id="yesSong" preload="auto">
+    <source src="hasi-ban-gaye.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="hellSong" preload="auto">
     <source src="make-you-mine.mp3" type="audio/mpeg">
   </audio>
 
@@ -86,13 +90,13 @@
     <h1>Priya Renuka Ji ❤️</h1>
 
     <p>
-      I’ve been thinking about your beautiful eyes all the time.<br/>
+      I’ve been thinking about yo, your eyes and everything about you.<br/>
       And how everything feels warmer when you’re around.
     </p>
 
     <h1>Will you be my Valentine forever?</h1>
 
-    <button class="yes" onclick="normalYes()">Yes 💖</button>
+    <button class="yes" onclick="yesClick()">Yes 💖</button>
     <button class="hell runaway" id="runawayBtn" onclick="hellYes()">
       Ohh Hell Yeah Poo 😌
     </button>
@@ -100,22 +104,87 @@
 
   <!-- YES SCREEN -->
   <div class="card hidden" id="yesCard">
-    <h1>You made my day 🥹</h1>
-    <p>Happy Valentine’s, Renuka ❤️</p>
+    <h1>You made me smile ❤️</h1>
+    <p>
+      Soft, simple, and real.<br/>
+      Just like us.
+    </p>
+    <p>Happy Valentine’s, Renuka 🌸</p>
   </div>
 
   <!-- HELL YEAH SCREEN -->
   <div class="card hidden" id="gifCard">
-    <h1>Dayum GIRLLL 🥳💖</h1>
+    <h1>Dayum GIRLLLLLL 🥳💖</h1>
+    <p>I LOVE YOU!! Worth every second 😌</p>
+
     <img src="celebrate.gif" alt="Celebration GIF" />
-    <p>Happy Valentine’s, Renuka Ji ❤️</p>
+
+    <p>Happy Valentine’s, Renuka ❤️</p>
   </div>
 
   <script>
-    const btn = document.getElementById("runawayBtn");
-    const unlockTime = Date.now() + 30000; // 30 seconds from load
+    const runawayBtn = document.getElementById("runawayBtn");
     let unlocked = false;
 
+    // Unlock Hell Yeah after 30 seconds
     setTimeout(() => {
       unlocked = true;
-      btn.classList.remove("runaway");
+      runawayBtn.classList.remove("runaway");
+      runawayBtn.style.transform = "translate(0,0)";
+    }, 30000);
+
+    document.addEventListener("mousemove", (e) => {
+      if (unlocked) return;
+
+      const rect = runawayBtn.getBoundingClientRect();
+      const btnX = rect.left + rect.width / 2;
+      const btnY = rect.top + rect.height / 2;
+
+      const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
+
+      if (distance < 160) {
+        const moveX = (Math.random() - 0.5) * window.innerWidth * 0.8;
+        const moveY = (Math.random() - 0.5) * window.innerHeight * 0.6;
+        runawayBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      }
+    });
+
+    function yesClick() {
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("yesCard").classList.remove("hidden");
+
+      const song = document.getElementById("yesSong");
+
+      song.onloadedmetadata = () => {
+        song.currentTime = 44; // 🎵 YES SONG START TIME
+        song.play();
+      };
+
+      if (song.readyState >= 1) {
+        song.currentTime = 44;
+        song.play();
+      }
+    }
+
+    function hellYes() {
+      if (!unlocked) return;
+
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("gifCard").classList.remove("hidden");
+
+      const song = document.getElementById("hellSong");
+
+      song.onloadedmetadata = () => {
+        song.currentTime = 47; // 🎵 HELL YEAH SONG START TIME
+        song.play();
+      };
+
+      if (song.readyState >= 1) {
+        song.currentTime = 47;
+        song.play();
+      }
+    }
+  </script>
+
+</body>
+</html>
