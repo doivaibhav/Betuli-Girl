@@ -103,7 +103,7 @@
     </p>
 
     <!-- Replace GIF link if you want -->
-    <[img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Celebration GIF" /](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDh6dmphZzZrOXU4czBhc3Fub203eXlscWd0NXZ0dmNxY3ZnNXdiOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/t3sZxY5zS5B0z5zMIz/giphy.gif)>
+    <img src="celebrate.gif" alt="Celebration GIF" />
 
     <p>
       Happy Valentine’s, Renuka ❤️
