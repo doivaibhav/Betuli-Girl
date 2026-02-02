@@ -76,6 +76,11 @@
 </head>
 <body>
 
+  <!-- AUDIO (hidden) -->
+  <audio id="loveSong">
+    <source src="make-you-mine.mp3" type="audio/mpeg">
+  </audio>
+
   <!-- QUESTION -->
   <div class="card" id="question">
     <h1>Hey Renuka ❤️</h1>
@@ -101,6 +106,49 @@
     </p>
   </div>
 
-  <!-- HELL YEAH GIF SCREEN -->
+  <!-- HELL YEAH GIF + MUSIC -->
   <div class="card hidden" id="gifCard">
-    <h1
+    <h1>LET’S GOOOO 🥳💖</h1>
+    <p>Now listen carefully…</p>
+
+    <img src="celebrate.gif" alt="Celebration GIF" />
+
+    <p>Happy Valentine’s, Renuka ❤️</p>
+  </div>
+
+  <script>
+    function normalYes() {
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("yesCard").classList.remove("hidden");
+    }
+
+    function hellYes() {
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("gifCard").classList.remove("hidden");
+
+      const song = document.getElementById("loveSong");
+      song.currentTime = 0;
+      song.play();
+    }
+
+    const btn = document.getElementById("runawayBtn");
+
+    document.addEventListener("mousemove", (e) => {
+      if (!btn) return;
+
+      const rect = btn.getBoundingClientRect();
+      const btnX = rect.left + rect.width / 2;
+      const btnY = rect.top + rect.height / 2;
+
+      const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
+
+      if (distance < 160) {
+        const moveX = (Math.random() - 0.5) * window.innerWidth * 0.8;
+        const moveY = (Math.random() - 0.5) * window.innerHeight * 0.6;
+        btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      }
+    });
+  </script>
+
+</body>
+</html>
