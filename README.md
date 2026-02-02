@@ -66,7 +66,11 @@
     .hidden {
       display: none;
     }
-  </style>
+  <.runaway {
+  position: relative;
+  transition: transform 0.15s ease;
+}
+>
 </head>
 <body>
 
@@ -83,7 +87,7 @@
     <h1>Will you be my Valentine?</h1>
 
     <button class="yes" onclick="normalYes()">Yes 💖</button>
-    <button class="hell" onclick="hellYes()">Hell Yeah Poo 😌</button>
+    <button class="hell runaway" onclick="hellYes()">Hell Yeah Poo 😌</button>
   </div>
 
   <!-- NORMAL YES -->
@@ -111,6 +115,24 @@
   </div>
 
   <script>
+  const runawayBtn = document.querySelector(".runaway");
+
+  document.addEventListener("mousemove", (e) => {
+    if (!runawayBtn) return;
+
+    const rect = runawayBtn.getBoundingClientRect();
+    const btnX = rect.left + rect.width / 2;
+    const btnY = rect.top + rect.height / 2;
+
+    const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
+
+    if (distance < 120) {
+      const moveX = (Math.random() - 0.5) * 200;
+      const moveY = (Math.random() - 0.5) * 120;
+      runawayBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    }
+  });
+</script>
     function normalYes() {
       document.getElementById("question").classList.add("hidden");
       document.getElementById("yesCard").classList.remove("hidden");
