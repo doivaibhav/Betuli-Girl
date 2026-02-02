@@ -66,11 +66,12 @@
     .hidden {
       display: none;
     }
-  <.runaway {
+    .runaway {
   position: relative;
   transition: transform 0.15s ease;
 }
-    <style>
+
+  </style>
 </head>
 <body>
 
@@ -88,6 +89,7 @@
 
     <button class="yes" onclick="normalYes()">Yes 💖</button>
     <button class="hell runaway" onclick="hellYes()">Hell Yeah Poo 😌</button>
+
   </div>
 
   <!-- NORMAL YES -->
@@ -107,7 +109,7 @@
     </p>
 
     <!-- Replace GIF link if you want -->
-    <img src="celebrate.gif" alt="Celebration GIF" />
+    <img src="celebrate.gif" />
 
     <p>
       Happy Valentine’s, Renuka ❤️
@@ -115,7 +117,16 @@
   </div>
 
   <script>
-  const runawayBtn = document.querySelector(".runaway");
+    function normalYes() {
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("yesCard").classList.remove("hidden");
+    }
+
+    function hellYes() {
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("gifCard").classList.remove("hidden");
+    }
+    const runawayBtn = document.querySelector(".runaway");
 
   document.addEventListener("mousemove", (e) => {
     if (!runawayBtn) return;
@@ -132,16 +143,6 @@
       runawayBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
     }
   });
-</script>
-    function normalYes() {
-      document.getElementById("question").classList.add("hidden");
-      document.getElementById("yesCard").classList.remove("hidden");
-    }
-
-    function hellYes() {
-      document.getElementById("question").classList.add("hidden");
-      document.getElementById("gifCard").classList.remove("hidden");
-    }
   </script>
 
 </body>
