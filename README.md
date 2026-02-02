@@ -83,18 +83,18 @@
 
   <!-- QUESTION -->
   <div class="card" id="question">
-    <h1> Priya Renuka Ji ❤️</h1>
+    <h1>Hey Renuka ❤️</h1>
 
     <p>
       I’ve been thinking about you.<br/>
-      About your beautiful eyes.<br/>
+      About us.<br/>
       And how everything feels warmer when you’re around.
     </p>
 
-    <h1>Will you be my Valentine forever?</h1>
+    <h1>Will you be my Valentine?</h1>
 
     <button class="yes" onclick="normalYes()">Yes 💖</button>
-    <button class="hell runaway" id="runawayBtn" onclick="hellYes()">Hell Yeah Poo 😌</button>
+    <button class="hell runaway" id="runawayBtn" onclick="hellYes()">Ohh Hell Yeah Poo 😌</button>
   </div>
 
   <!-- YES SCREEN -->
@@ -108,8 +108,8 @@
 
   <!-- HELL YEAH SCREEN -->
   <div class="card hidden" id="gifCard">
-    <h1>Dayum GIRLL 🥳💖</h1>
-    <p>I love you!! Now listen to this…</p>
+    <h1>LET’S GOOOO 🥳💖</h1>
+    <p>Worth the effort 😌</p>
 
     <img src="celebrate.gif" alt="Celebration GIF" />
 
@@ -117,24 +117,28 @@
   </div>
 
   <script>
+    let escapeCount = 0;
+    const maxEscapes = 6;
+
     function normalYes() {
       document.getElementById("question").classList.add("hidden");
       document.getElementById("yesCard").classList.remove("hidden");
     }
 
     function hellYes() {
+      // Only clickable after 6 escapes
+      if (escapeCount < maxEscapes) return;
+
       document.getElementById("question").classList.add("hidden");
       document.getElementById("gifCard").classList.remove("hidden");
 
       const song = document.getElementById("loveSong");
 
-      // Wait until metadata is loaded, THEN jump to 47s
       song.onloadedmetadata = () => {
         song.currentTime = 47;
         song.play();
       };
 
-      // Fallback in case metadata is already loaded
       if (song.readyState >= 1) {
         song.currentTime = 47;
         song.play();
@@ -144,7 +148,7 @@
     const btn = document.getElementById("runawayBtn");
 
     document.addEventListener("mousemove", (e) => {
-      if (!btn) return;
+      if (!btn || escapeCount >= maxEscapes) return;
 
       const rect = btn.getBoundingClientRect();
       const btnX = rect.left + rect.width / 2;
@@ -153,9 +157,18 @@
       const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
 
       if (distance < 160) {
+        escapeCount++;
+
         const moveX = (Math.random() - 0.5) * window.innerWidth * 0.8;
         const moveY = (Math.random() - 0.5) * window.innerHeight * 0.6;
+
         btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+
+        // After final escape, stop running
+        if (escapeCount === maxEscapes) {
+          btn.classList.remove("runaway");
+          btn.style.transform = "translate(0, 0)";
+        }
       }
     });
   </script>
