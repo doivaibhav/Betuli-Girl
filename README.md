@@ -90,7 +90,7 @@
     <h1>Priya Renuka Ji ❤️</h1>
 
     <p>
-      I’ve been thinking about yo, your eyes and everything about you.<br/>
+      I’ve been thinking about your eyes and everything about you.<br/>
       And how everything feels warmer when you’re around.
     </p>
 
